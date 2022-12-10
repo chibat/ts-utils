@@ -53,7 +53,6 @@ export class CacheMap<K, V> {
   get(key: K) {
     const internalValue = this.#map.get(key);
     if (!internalValue) {
-      console.debug(this.#map.size);
       return undefined;
     }
     if (
@@ -61,13 +60,13 @@ export class CacheMap<K, V> {
         this.#config.expireMillis
     ) {
       this.#map.delete(key);
-      console.debug("deleted", this.#map.size);
+      console.debug("expire", key, internalValue);
       return undefined;
     }
     if (this.#config.updateExpireWhenGet) {
       this.set(key, internalValue.value);
     }
-    console.debug(this.#map.size);
+    console.debug("hit", key, internalValue);
     return internalValue.value;
   }
 
