@@ -3,8 +3,8 @@ import { hex } from "../deps.ts";
 /**
  * HMAC SHA-256
  * The result is the same as below.
- * ```
- * echo -n "value" | openssl dgst -sha256 -hmac "secret_key"`
+ * ```sh
+ * echo -n "value" | openssl dgst -sha256 -hmac "secret_key"
  * ```
  * 
  * @param data 
