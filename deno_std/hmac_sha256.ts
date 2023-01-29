@@ -6,10 +6,10 @@ import { hex } from "../deps.ts";
  * ```sh
  * echo -n "value" | openssl dgst -sha256 -hmac "secret_key"
  * ```
- * 
- * @param data 
- * @param key 
- * @returns 
+ *
+ * @param data
+ * @param key
+ * @returns
  */
 export async function sign(data: string, key: string) {
   const encoder = new TextEncoder();
@@ -27,4 +27,3 @@ export async function sign(data: string, key: string) {
   const result = await crypto.subtle.sign("HMAC", cryptoKey, unit8Array.buffer);
   return new TextDecoder().decode(hex.encode(new Uint8Array(result)));
 }
-

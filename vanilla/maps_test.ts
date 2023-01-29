@@ -10,7 +10,7 @@ Deno.test("LimitedSizeMap", () => {
 });
 
 Deno.test("CacheMap", () => {
-  const map = new CacheMap<string, number>({max: 2, expireMillis: 1000 * 2});
+  const map = new CacheMap<string, number>({ max: 2, expireMillis: 1000 * 2 });
   map.set("aaa", 1);
   assertEquals(map.get("aaa"), 1);
   return new Promise((resolve, _reject) => {
