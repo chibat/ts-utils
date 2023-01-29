@@ -1,4 +1,4 @@
-import { encode } from "std/encoding/hex.ts";
+import { hex } from "../deps.ts";
 
 /**
  * HMAC SHA-256
@@ -25,6 +25,6 @@ export async function sign(data: string, key: string) {
 
   const unit8Array = encoder.encode(data);
   const result = await crypto.subtle.sign("HMAC", cryptoKey, unit8Array.buffer);
-  return new TextDecoder().decode(encode(new Uint8Array(result)));
+  return new TextDecoder().decode(hex.encode(new Uint8Array(result)));
 }
 
