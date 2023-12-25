@@ -7,6 +7,7 @@ Deno.test("serialize desrialize", () => {
     integer: 1,
     float: Math.PI,
     string: "Hello 日本語!",
+    bingint: 1n,
     binary: Uint8Array.from([1, 2, 3]),
     array: [10, 20, 30],
     map: { foo: "bar" },
