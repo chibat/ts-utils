@@ -4,6 +4,7 @@ import { desrialize, serialize } from "./msgpack.ts";
 Deno.test("serialize desrialize", () => {
   const originalObject = {
     nil: null,
+    // ud: undefined,
     integer: 1,
     float: Math.PI,
     string: "Hello 日本語!",

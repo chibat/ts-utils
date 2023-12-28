@@ -17,6 +17,7 @@ Deno.test("stringToBase64 base64ToString", () => {
 Deno.test("serialize desrialize", () => {
   const original = {
     nil: null,
+    // ud: undefined,
     integer: 1,
     float: Math.PI,
     string: "Hello 日本語!",
