@@ -1,16 +1,27 @@
+import { assertEquals } from "std/testing/asserts.ts";
 import {
-  base64ToString,
+  base64ToBase64Url,
+  base64urlToBase64,
+  base64urlToString,
   desrialize,
   serialize,
-  stringToBase64,
-} from "./base64.ts";
-import { assertEquals } from "std/testing/asserts.ts";
+  stringToBase64url,
+} from "./base64url.ts";
+
+Deno.test("base64ToBase64Url base64urlToBase64", () => {
+  const original = "a+b/cd==";
+  // const original = "abcd";
+  const base64url = base64ToBase64Url(original);
+  console.log(base64url);
+  const base64 = base64urlToBase64(base64url);
+  assertEquals(base64, original);
+});
 
 Deno.test("stringToBase64 base64ToString", () => {
   const original = "こんにちは、日本語!";
-  const encoded = stringToBase64(original);
+  const encoded = stringToBase64url(original);
   console.info(encoded);
-  const decoded = base64ToString(encoded);
+  const decoded = base64urlToString(encoded);
   assertEquals(decoded, original);
 });
 

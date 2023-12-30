@@ -13,6 +13,6 @@ export function serialize(object: object): string {
   return stringToBase64(JSON.stringify(object));
 }
 
-export function desrialize(base64: string) {
+export function desrialize<T>(base64: string): T {
   return JSON.parse(base64ToString(base64));
 }
