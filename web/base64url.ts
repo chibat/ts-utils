@@ -1,9 +1,12 @@
 import { base64ToString, stringToBase64 } from "./base64.ts";
 
 export function base64urlToBase64(base64url: string) {
-  let base64 = base64url.replace(/-/g, "+").replace(/_/g, "/");
-  while (base64.length % 4) {
-    base64 += "=";
+  const base64 = base64url.replace(/-/g, "+").replace(/_/g, "/");
+  const r = base64.length % 4;
+  if (r === 2) {
+    return base64 + "==";
+  } else if (r === 3) {
+    return base64 + "=";
   }
   return base64;
 }
